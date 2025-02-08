@@ -3,7 +3,6 @@
     height: 100%;
     display: none;
     /* display: flex; */
-    display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -60,4 +59,8 @@
 .form__printed-book,
 .form__audio-book {
     display: none;
+}
+
+.display-form {
+    display: flex;
 }
