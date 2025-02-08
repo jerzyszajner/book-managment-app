@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Managment Application</title>
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/variables.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/form.css" />
   </head>
   <body>
     <!-- STRUCTURE FOR THE HEADER -->
-    <header>
-      <h1>Book Managment Application</h1>
+    <header class="header">
+      <h1 class="header__title">Book Managment Application</h1>
     </header>
     <!-- MAIN STRUCTURE -->
     <main>
@@ -26,7 +30,7 @@
             </button>
           </div>
           <div class="add-books">
-            <button class="add-book__button">Add</button>
+            <button class="add-books__button">Add</button>
           </div>
         </div>
         <div class="books">
@@ -86,16 +90,16 @@
           <label for="book-type">Book Type:</label>
           <select name="book-type" id="book-type" class="form__book-type">
             <option value="">Select Book Type</option>
-            <option value="printed-book">Printed Book</option>
-            <option value="audio-book">Audio Book</option>
+            <option value="printed-book">Printed book</option>
+            <option value="audio-book">Audio book</option>
           </select>
         </div>
         <!-- FORM ELEMENTS FOR THE PRINTED BOOKS -->
         <div class="form__printed-book">
-          <fieldset>
+          <fieldset class="form__category">
             <legend>Printed Books Details</legend>
             <div class="form__grup">
-              <label for="pages">Number of pages:</label>
+              <label for="pages">Number Of Pages:</label>
               <input
                 type="number"
                 name="pages"
@@ -115,14 +119,14 @@
               >
                 <option value="">Select Print Type</option>
                 <option value="color">Color</option>
-                <option value="black-white">Black And White</option>
+                <option value="black-white">Black and white</option>
               </select>
             </div>
           </fieldset>
         </div>
         <!-- FORM ELEMENTS FOR AUDIO BOOKS -->
         <div class="form__audio-book">
-          <fieldset>
+          <fieldset class="form__category">
             <legend>Audio Books Details</legend>
             <div class="form__grup">
               <label for="narrator">Narrator:</label>
