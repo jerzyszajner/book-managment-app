@@ -1,4 +1,5 @@
 import Ui from "./ui";
+import BookManager from "./bookManager";
 
 // SELECT DOM ELEMENTS
 const openAddModalButton = document.querySelector(".add-books__button");
@@ -54,5 +55,20 @@ bookTypeDropdown.addEventListener("change", () => {
     audioFields,
     printedFields,
     bookTypeDropdown.value
+  );
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  BookManager.addBook(
+    title.value.trim(),
+    author.value.trim(),
+    publisher.value.trim(),
+    date.value,
+    bookTypeDropdown.value,
+    pages.value.trim(),
+    printType.value,
+    narrator.value.trim(),
+    duration.value
   );
 });
