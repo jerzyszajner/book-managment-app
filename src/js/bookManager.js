@@ -39,6 +39,11 @@ class BookManager {
       );
     }
     BookManager.booksCollection.push(book);
+    this.storeBooks(this.booksCollection);
+  }
+
+  static storeBooks(collection) {
+    localStorage.setItem("books-collection", JSON.stringify(collection));
   }
 }
 
