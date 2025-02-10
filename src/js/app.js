@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     audioBookContainer
   );
   Ui.closeAddModal(closeAddModalButton, formModal);
+  Ui.renderBooks();
 });
 
 // ADDING EVENT LISTENERS
@@ -71,4 +72,5 @@ form.addEventListener("submit", (e) => {
     narrator.value.trim(),
     duration.value
   );
+  Ui.renderBooks();
 });
