@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   Ui.closeAddModal(closeAddModalButton, formModal);
   Ui.renderBooks();
+  Ui.closeDeleteModal();
 });
 
 // ADDING EVENT LISTENERS
