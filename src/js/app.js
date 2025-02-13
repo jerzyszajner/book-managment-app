@@ -1,5 +1,6 @@
 import Ui from "./ui";
 import BookManager from "./bookManager";
+import Validation from "./validation";
 
 // SELECT DOM ELEMENTS
 const openAddModalButton = document.querySelector(".add-books__button");
@@ -17,6 +18,7 @@ const date = document.querySelector(".form__publication-input");
 const bookTypeDropdown = document.querySelector(".form__book-type");
 const filterContainer = document.querySelector(".filter-books");
 const formSubmitButton = document.querySelector(".form__add-button");
+const validationMessage = document.querySelector(".form__validation-message");
 
 // SELECTING ELEMENTS SPECIFIC TO PRINTED BOOKS
 const pages = document.querySelector(".form__pages-input");
@@ -44,9 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
     printedBookContainer,
     audioBookContainer
   );
-  Ui.closeAddModal(closeAddModalButton, formModal);
-  Ui.renderBooks();
+  Ui.closeAddModal(
+    closeAddModalButton,
+    formModal,
+    form,
+    validationMessage,
+    formSubmitButton
+  );
   Ui.closeDeleteModal();
+  Ui.renderBooks();
 });
 
 // ADDING EVENT LISTENERS
@@ -62,18 +70,40 @@ bookTypeDropdown.addEventListener("change", () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  BookManager.addBook(
-    title.value.trim(),
-    author.value.trim(),
-    publisher.value.trim(),
-    date.value,
-    bookTypeDropdown.value,
-    pages.value.trim(),
-    printType.value,
-    narrator.value.trim(),
-    duration.value
-  );
+  if (!Validation.validateForm(bookTypeDropdown.value, validationMessage)) {
+    return;
+  }
+  if (!Ui.currentEditId) {
+    BookManager.addBook(
+      title.value.trim(),
+      author.value.trim(),
+      publisher.value.trim(),
+      date.value,
+      bookTypeDropdown.value,
+      pages.value.trim(),
+      printType.value,
+      narrator.value.trim(),
+      duration.value
+    );
+  } else {
+    BookManager.editBook(
+      Ui.currentEditId,
+      title.value.trim(),
+      author.value.trim(),
+      publisher.value.trim(),
+      date.value,
+      bookTypeDropdown.value,
+      pages.value.trim(),
+      printType.value,
+      narrator.value.trim(),
+      duration.value
+    );
+    Ui.currentEditId = null;
+    formModal.classList.remove("display-form");
+    // formSubmitButton.textContent = "Add";
+  }
   Ui.renderBooks();
+  form.reset();
 });
 
 filterContainer.addEventListener("click", (e) => {
